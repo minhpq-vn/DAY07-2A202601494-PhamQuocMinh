@@ -1,3 +1,6 @@
 doc_id,file_path,title,source_url,retrieved_at,document_version,license_or_permission
-k4-returns-policy,data/k4_ecommerce/returns-policy.md,Chính sách đổi trả,https://example.com/chinh-sach/doi-tra,2026-08-02,2026.1,example-template-replace-me
-k4-seller-listing,data/k4_ecommerce/seller-listing.md,Quy định đăng bán,https://example.com/nguoi-ban/dang-ban,2026-08-02,2026.1,example-template-replace-me
+eu-guarantees-returns,data/k4_ecommerce/eu-guarantees-returns.md,Guarantees and returns for goods bought in the EU,https://europa.eu/youreurope/citizens/consumers/shopping/guarantees/index_en.htm,2026-08-03,2026-07-30,EU-public-page
+eu-shopping-rights,data/k4_ecommerce/eu-shopping-rights.md,Consumer shopping rights in the EU,https://europa.eu/youreurope/citizens/consumers/shopping/shopping-consumer-rights/index_en.htm,2026-08-03,2025-09-25,EU-public-page
+eu-pricing-payments,data/k4_ecommerce/eu-pricing-payments.md,Pricing and payment rules for EU shoppers,https://europa.eu/youreurope/citizens/consumers/shopping/pricing-payments/index_en.htm,2026-08-03,2025-06-16,EU-public-page
+eu-seller-guarantees,data/k4_ecommerce/eu-seller-guarantees.md,Consumer guarantees and returns for EU sellers,https://europa.eu/youreurope/business/selling-in-eu/consumer-contracts-guarantees/consumer-guarantees/index_en.htm,2026-08-03,2026-07-12,EU-public-page
+eu-online-shop-rules,data/k4_ecommerce/eu-online-shop-rules.md,Payment and online-shop obligations for EU sellers,https://europa.eu/youreurope/business/growing/digitalising/setting-up-online-shop/index_en.htm,2026-08-03,2026-07-13,EU-public-page
