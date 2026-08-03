@@ -4,7 +4,7 @@
 **Nhóm:** HUST
 **Ngày:** 2026-08-03
 
-> **Nộp 1 bản / sinh viên.** Phần nhóm (lựa chọn tài liệu, thiết kế chiến lược, bộ câu hỏi đánh giá, demo) nộp chung 1 bản trong `REPORT_NHOM.md`. Chi tiết thang điểm: `docs/SCORING.md`.
+> **Nộp 1 bản / sinh viên.** Phần nhóm nằm trong `REPORT_NHOM.md` và thang điểm nằm trong `docs/SCORING.md` ở thư mục gốc repo nhóm.
 
 **Tổng điểm phần cá nhân: 60** = Khởi động (5) + Hướng tiếp cận (10) + Hoàn thiện code (30) + Dự đoán độ tương tự (5) + Kết quả truy xuất của tôi (10).
 

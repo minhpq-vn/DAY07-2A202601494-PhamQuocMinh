@@ -2,6 +2,8 @@
 
 > Bản K4 của Lab 07. Hướng dẫn Codelabs được phát riêng trên lớp/LMS (không kèm trong repo); yêu cầu Giai đoạn 2 riêng xem [K4_VARIANT.md](K4_VARIANT.md).
 
+> Repo nhóm dùng thư mục gốc cho tài liệu chung và `REPORT_NHOM.md`. Mỗi thư mục mang tên thành viên là một bài độc lập; hãy `cd` vào thư mục đó trước khi chạy `main.py`, `bench.py` hoặc test.
+
 ---
 
 ## Mục Tiêu
@@ -34,8 +36,9 @@ Nhóm cùng chọn một bộ tài liệu và thống nhất 5 câu hỏi đánh
 Phần bắt buộc được kiểm thử trên **Python 3.11**. Dùng đúng trình thông dịch (interpreter) này khi tạo môi trường ảo (virtual environment) (`py -3.11` trên Windows hoặc `python3.11` trên macOS/Linux); file `.python-version` cũng đã khai báo phiên bản chuẩn.
 
 ```bash
+cd PhamQuocMinh-2A202601494  # thay bằng thư mục thành viên cần chạy
 pip install -r requirements.txt
-pytest tests/ -v          # Phần lớn bài kiểm thử sẽ THẤT BẠI (chưa được lập trình)
+python -m pytest tests/ -v
 ```
 
 Mặc định, lab vẫn chạy với trình nhúng giả lập `_mock_embed` nên **không bắt buộc** cài đặt mô hình nhúng (embedder) thật.
@@ -131,24 +134,21 @@ PY
 ```
 ├── README.md              ← Bạn đang đọc file này
 ├── exercises.md           ← Bài tập (4 phần)
-├── main.py               ← Điểm bắt đầu cho việc chạy thử thủ công (manual demo)
-├── ingest.py             ← Pipeline nạp dữ liệu ĐÃ CUNG CẤP (front matter → chunk → metadata → store)
-├── src/
-│   ├── chunking.py       ← Các lớp Chunking + hàm hỗ trợ tính độ tương tự
-│   ├── store.py          ← Lớp EmbeddingStore
-│   ├── agent.py          ← Lớp KnowledgeBaseAgent
-│   └── ...               ← Các module nhỏ hơn
-├── data/                  ← Tài liệu mẫu + tài liệu do nhóm thu thập (.txt/.md)
-├── tests/
-│   └── test_solution.py   ← Bộ kiểm thử (42 tests)
-├── report/
-│   ├── REPORT_NHOM.md    ← Báo cáo nhóm (1 file/nhóm)
-│   └── REPORT_CANHAN.md  ← Báo cáo cá nhân (1 file/sinh viên)
+├── REPORT_NHOM.md         ← Báo cáo nhóm
+├── data/k4_ecommerce/     ← Corpus chung và sources.csv
+├── <HoTen-MSSV>/          ← Một bài độc lập của thành viên
+│   ├── main.py
+│   ├── ingest.py
+│   ├── bench.py
+│   ├── src/
+│   ├── tests/
+│   ├── data/k4_ecommerce/
+│   └── report/REPORT_CANHAN.md
 ├── docs/
 │   ├── DATA_COLLECTION.md ← Hướng dẫn thu thập & format dữ liệu
 │   ├── EVALUATION.md     ← Các tiêu chí đánh giá
 │   └── SCORING.md        ← Tiêu chí chấm điểm
-└── requirements.txt
+└── requirements*.txt
 ```
 
 ---
@@ -186,7 +186,7 @@ PY
 > Trước khi thu thập dữ liệu, đọc [Hướng dẫn crawl và format dữ liệu](docs/DATA_COLLECTION.md). Mỗi nhóm crawl theo **chủ đề cố định của lớp K4** (chính sách TMĐT / hỗ trợ khách hàng — xem [K4_VARIANT.md](K4_VARIANT.md)), dùng 5–10 nguồn công khai/được phép và lưu kèm metadata có thể truy vết.
 
 1. **Thu thập bộ tài liệu** (5-10 tài liệu) trong chủ đề cố định của lớp K4: chính sách/FAQ/hướng dẫn về thanh toán, đổi trả, giao hàng, quyền riêng tư, điều kiện người bán
-2. **Chuyển sang định dạng .txt/.md** nếu cần (xem mẹo trong exercises.md); nạp bằng `build_knowledge_base()` trong `ingest.py`
+2. **Chuyển sang định dạng .txt/.md** nếu cần (xem mẹo trong exercises.md); mỗi thành viên nạp bằng `build_knowledge_base()` trong `ingest.py` của mình
 3. **Thống nhất 5 câu hỏi đánh giá** kèm theo câu trả lời chuẩn (gold answers)
 4. **Mỗi thành viên thử chiến lược riêng**: phương pháp chunking, các tham số, cấu trúc metadata
 5. **So sánh kết quả trong nhóm**: chiến lược nào cho việc truy xuất tốt hơn? Tại sao?
@@ -235,14 +235,15 @@ Xem chi tiết tại `docs/SCORING.md`. Tóm tắt:
 
 ## Sản Phẩm Nộp Bài
 
-1. Thư mục `src/` — hoàn thành tất cả các mục CẦN LÀM (TODO) cần thiết
-2. File `report/REPORT_NHOM.md` — **một báo cáo nhóm** (chung: lựa chọn tài liệu, thiết kế chiến lược, bộ câu hỏi đánh giá, demo)
-3. File `report/REPORT_CANHAN.md` — **một báo cáo cá nhân cho mỗi sinh viên** (riêng: hướng tiếp cận, hoàn thiện code, dự đoán, kết quả truy xuất)
+1. Mỗi thư mục thành viên có `src/`, `tests/`, `bench.py` và `report/REPORT_CANHAN.md`
+2. File `REPORT_NHOM.md` ở thư mục gốc — báo cáo chung về dữ liệu, chiến lược, benchmark và demo
+3. Corpus chung `data/k4_ecommerce/` gồm 5 tài liệu và `sources.csv`
 
 ---
 
 ## Chạy Kiểm Thử
 
 ```bash
-pytest tests/ -v
+cd <HoTen-MSSV>
+python -m pytest tests/ -v
 ```

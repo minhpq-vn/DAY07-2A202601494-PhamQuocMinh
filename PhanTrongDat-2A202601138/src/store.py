@@ -27,14 +27,7 @@ class EmbeddingStore:
         self._collection = None
         self._next_index = 0
 
-        try:
-            import chromadb  # noqa: F401
-
-            # TODO: initialize chromadb client + collection
-            self._use_chroma = True
-        except Exception:
-            self._use_chroma = False
-            self._collection = None
+        # This implementation intentionally uses the in-memory backend.
 
     def _make_record(self, doc: Document) -> dict[str, Any]:
         meta = doc.metadata.copy() if doc.metadata is not None else {}
